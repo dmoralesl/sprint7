@@ -1,0 +1,21 @@
+
+<p>What do you want?</p>
+<div>
+    <form [formGroup]="productsForm">
+        <div>
+            <input type="checkbox" name="web" id="web" formControlName="web">
+            <label for="web" >A web page (500$)</label>
+
+            <app-panel *ngIf="viewWebDetails" [subTotal]="subTotalPrice" (newTotalEvent)="setTotal($event)"></app-panel>
+        </div>
+        <div>
+            <input type="checkbox" name="seo" id="seo" formControlName="seo">
+            <label for="web">SEO service (300$)</label>
+        </div>
+        <div>
+            <input type="checkbox" name="sem" id="sem" formControlName="sem">
+            <label for="web">Google Ads campaign (200$)</label>
+        </div>
+    </form>
+</div>
+<p>Prize: {{ totalPrice }}$</p>
