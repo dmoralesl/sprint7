@@ -17,7 +17,6 @@ export class PanelComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    console.log(this.subTotal)
   }
 
   ngAfterViewInit() {
@@ -29,7 +28,6 @@ export class PanelComponent implements OnInit, AfterViewInit {
       const pagesNumber = this.webDetailsForm.get('numberPages')!.value;
       this.newTotalEvent.emit(this.budgetService.calculateTotal(this.subTotal, pagesNumber, languagesNumber))
     });
-    
   }
 
   webDetailsForm: FormGroup = new FormGroup({
