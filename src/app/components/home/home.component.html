@@ -1,6 +1,10 @@
+<a routerLink="/" routerLinkActive="active">
+    <fa-icon [icon]="faArrowLeft" [style.color]="'gray'"></fa-icon>
+</a>
 
 <p>What do you want?</p>
 <div>
+
     <form [formGroup]="productsForm">
         <div>
             <input type="checkbox" name="web" id="web" formControlName="web">

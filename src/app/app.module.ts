@@ -8,13 +8,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { PanelComponent } from './components/panel/panel.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PanelComponent,
-    CustomInputComponent
+    CustomInputComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

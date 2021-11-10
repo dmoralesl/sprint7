@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { BudgetService } from './../../services/budget.service';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.refreshBugdet();
     });
   } 
+
+  // Font Awesome Icons
+  faArrowLeft = faArrowLeft;
 
   totalPrice: number = 0;
   subTotalPrice: number = 0;
