@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.refreshBugdet();
+    // Setting to 0 the total price each time component is charged to avoid keep 
+    // previous amount when navigation between routes.
+    this.totalPrice = 0;
   }
 
   ngAfterViewInit(): void {
