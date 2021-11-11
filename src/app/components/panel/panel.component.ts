@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { BudgetService } from './../../services/budget.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-panel',
@@ -13,7 +15,9 @@ export class PanelComponent implements OnInit, AfterViewInit {
   @Input() subTotal: number = 0; 
   @Output() newTotalEvent = new EventEmitter<number>();
   
-  constructor(private budgetService: BudgetService) { }
+  constructor(
+    private budgetService: BudgetService,
+    private modal: NgbModal) { }
 
 
   ngOnInit(): void {
@@ -30,10 +34,22 @@ export class PanelComponent implements OnInit, AfterViewInit {
     });
   }
 
+  // Font Awesome Icons
+  faInfoCircle = faInfoCircle;
+
+  modalText: string = "";
+
   webDetailsForm: FormGroup = new FormGroup({
     numberPages: new FormControl(1, [Validators.required, Validators.min(1)]),
     numberLanguages: new FormControl(1, [Validators.required, Validators.min(1)])
   });
 
+  openModal(targetModal: TemplateRef<any>) {
+    this.modal.open(targetModal, { windowClass: 'bottom-modal' });
+  }
 
+  fillModal(targetModal: TemplateRef<any>, text: string) {
+    this.modalText = text;
+    this.openModal(targetModal);
+  }
 }

@@ -9,9 +9,8 @@
         <div>
             <input type="checkbox" name="web" id="web" formControlName="web">
             <label for="web" >A web page (500$)</label>
-
-            <app-panel *ngIf="viewWebDetails" [subTotal]="subTotalPrice" (newTotalEvent)="setTotal($event)"></app-panel>
         </div>
+        <app-panel *ngIf="viewWebDetails" [subTotal]="subTotalPrice" (newTotalEvent)="setTotal($event)"></app-panel>
         <div>
             <input type="checkbox" name="seo" id="seo" formControlName="seo">
             <label for="web">SEO service (300$)</label>

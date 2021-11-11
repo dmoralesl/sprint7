@@ -6,9 +6,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './components/home/home.component';
-import { NgModule } from '@angular/core';
-import { PanelComponent } from './components/panel/panel.component';
 import { LandingComponent } from './components/landing/landing.component';
+import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,11 @@ import { LandingComponent } from './components/landing/landing.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: []
 })
 export class AppModule { }
