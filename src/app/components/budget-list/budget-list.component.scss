@@ -1,0 +1,36 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.budget {
+    border: 1px solid gray;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.budget-header {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.712);
+    text-align: center;
+
+    span {
+        color: green;
+        padding: .3rem;
+        font-weight: bolder;
+    }
+}
+
+ul {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+
+    ul {
+        padding: .3rem 1rem;
+        color: gray;
+        font-style: italic;
+    }
+}

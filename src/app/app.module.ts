@@ -10,6 +10,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanelComponent } from './components/panel/panel.component';
+import { BudgetListComponent } from './components/budget-list/budget-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PanelComponent } from './components/panel/panel.component';
     HomeComponent,
     PanelComponent,
     CustomInputComponent,
-    LandingComponent
+    LandingComponent,
+    BudgetListComponent
   ],
   imports: [
     BrowserModule,

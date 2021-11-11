@@ -1,24 +1,38 @@
-<a routerLink="/" routerLinkActive="active">
-    <fa-icon [icon]="faArrowLeft" [style.color]="'gray'"></fa-icon>
-</a>
-
-<p>What do you want?</p>
 <div>
+    <a routerLink="/" routerLinkActive="active">
+        <fa-icon [icon]="faArrowLeft" [style.color]="'gray'"></fa-icon>
+    </a>
 
-    <form [formGroup]="productsForm">
+    <p>What do you want?</p>
+
+    <form [formGroup]="productsForm" (ngSubmit)="saveBudget()">
+        <div class="d-flex flex-row p-4">
+            <div class="d-flex flex-column">
+                <label for="budgetName">Budget name: </label>
+                <input type="text" formControlName="budgetName" #budgetName>
+            </div>
+            <div class="d-flex flex-column">
+                <label for="clientName">Client name: </label>
+                <input type="text" formControlName="clientName" #clientName>
+            </div>
+        </div>
         <div>
-            <input type="checkbox" name="web" id="web" formControlName="web">
+            <input type="checkbox" name="web" #web formControlName="web">
             <label for="web" >A web page (500$)</label>
         </div>
         <app-panel *ngIf="viewWebDetails" [subTotal]="subTotalPrice" (newTotalEvent)="setTotal($event)"></app-panel>
         <div>
-            <input type="checkbox" name="seo" id="seo" formControlName="seo">
+            <input type="checkbox" name="seo" #seo formControlName="seo">
             <label for="web">SEO service (300$)</label>
         </div>
         <div>
-            <input type="checkbox" name="sem" id="sem" formControlName="sem">
+            <input type="checkbox" name="sem" #sem formControlName="sem">
             <label for="web">Google Ads campaign (200$)</label>
         </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!productsForm.valid">Save budget</button>
     </form>
+    <p>Prize: {{ totalPrice }}$</p>
 </div>
-<p>Prize: {{ totalPrice }}$</p>
+
+<app-budget-list></app-budget-list>

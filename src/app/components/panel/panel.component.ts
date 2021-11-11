@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { BudgetService } from './../../services/budget.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TotalEventModel } from './../../models/EventsModel';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -13,7 +14,7 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 export class PanelComponent implements OnInit, AfterViewInit {
 
   @Input() subTotal: number = 0; 
-  @Output() newTotalEvent = new EventEmitter<number>();
+  @Output() newTotalEvent = new EventEmitter<TotalEventModel>();
   
   constructor(
     private budgetService: BudgetService,
@@ -26,11 +27,19 @@ export class PanelComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.webDetailsForm.get('numberPages')!.valueChanges.subscribe(pagesNumber =>  {
       const languagesNumber = this.webDetailsForm.get('numberLanguages')!.value;
-      this.newTotalEvent.emit(this.budgetService.calculateTotal(this.subTotal, pagesNumber, languagesNumber))
+      this.newTotalEvent.emit({
+        total: this.budgetService.calculateTotal(this.subTotal, pagesNumber, languagesNumber),
+        pagesNumber,
+        languagesNumber
+      });
     });
     this.webDetailsForm.get('numberLanguages')!.valueChanges.subscribe( languagesNumber =>  {
       const pagesNumber = this.webDetailsForm.get('numberPages')!.value;
-      this.newTotalEvent.emit(this.budgetService.calculateTotal(this.subTotal, pagesNumber, languagesNumber))
+      this.newTotalEvent.emit({
+        total: this.budgetService.calculateTotal(this.subTotal, pagesNumber, languagesNumber),
+        pagesNumber,
+        languagesNumber
+      });
     });
   }
 

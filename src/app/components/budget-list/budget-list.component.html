@@ -1,0 +1,31 @@
+
+<div *ngFor="let budget of budgets" class="budget">
+    <div class="budget-header">
+        <div>{{ budget.name }} <span [style.color]="'gray'">[{{ budget.client }}]</span></div>
+        <span>{{ budget.total }}$</span>
+    </div>
+    <div class="budget-body">
+        <ul>
+            <li *ngIf="budget.options.web.selected">
+                <span><fa-icon [icon]="faCheckCircle" [style.color]="'green'"></fa-icon></span>
+                Web
+                <ul>
+                    <li>
+                        {{ budget.options.web.pagesNumber || 1 }} pages
+                    </li>
+                    <li>
+                        {{ budget.options.web.languagesNumber || 1 }} languages
+                    </li>                    
+                </ul>
+            </li>
+            <li *ngIf="budget.options.seo">
+                <span><fa-icon [icon]="faCheckCircle" [style.color]="'green'"></fa-icon></span>
+                Seo
+            </li>
+            <li *ngIf="budget.options.sem">
+                <span><fa-icon [icon]="faCheckCircle" [style.color]="'green'"></fa-icon></span>
+                Sem
+            </li>
+        </ul>
+    </div>
+</div>

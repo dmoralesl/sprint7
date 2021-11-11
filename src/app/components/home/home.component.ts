@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { BudgetModel } from '../../models/BudgetModel';
 import { BudgetService } from './../../services/budget.service';
+import { TotalEventModel } from '../../models/EventsModel';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -42,20 +44,46 @@ export class HomeComponent implements OnInit, AfterViewInit {
   totalPrice: number = 0;
   subTotalPrice: number = 0;
   viewWebDetails: boolean = false;
+  pagesNumber: number = 0;
+  languagesNumber: number = 0;
 
   productsForm: FormGroup = new FormGroup({
     web: new FormControl(),
     seo: new FormControl(),
     sem: new FormControl(),
+    budgetName: new FormControl('', Validators.required),
+    clientName: new FormControl('', Validators.required)
   });
 
-  setTotal(value: number): void {
-    this.budgetService.setTotal(value);
+  setTotal(totalObject: TotalEventModel): void {
+    this.budgetService.setTotal(totalObject.total);
+    this.pagesNumber = totalObject.pagesNumber;
+    this.languagesNumber = totalObject.languagesNumber;
     this.refreshBugdet();
   }
 
   refreshBugdet(): void {
     this.totalPrice = this.budgetService.totalPrice;
     this.subTotalPrice = this.budgetService.subTotalPrice;
+  }
+
+  saveBudget(): void {
+    const budgetObject: BudgetModel = {
+      name: this.productsForm.value.budgetName,
+      client: this.productsForm.value.clientName,
+      total: this.totalPrice,
+      options: {
+        web: {
+          selected: this.productsForm.value.web,
+          pagesNumber: this.pagesNumber,
+          languagesNumber: this.languagesNumber
+          },
+        seo: this.productsForm.value.seo,
+        sem: this.productsForm.value.sem
+      }
+    };
+
+    this.budgetService.addBudget(budgetObject);
+
   }
 }

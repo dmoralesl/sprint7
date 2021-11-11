@@ -1,9 +1,9 @@
 :host {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
-form:first-child {
+form {
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -14,9 +14,20 @@ form:first-child {
         gap: .5rem;
         align-items: center;
     }
+
+    button {
+        width: max-content;
+        margin: auto;
+        margin-top: 2rem;
+    }
 }
 
 a {
     padding-bottom: 2.5rem;
     font-size: larger;
+}
+
+div:first-child {
+    display: flex;
+    flex-direction: column;
 }

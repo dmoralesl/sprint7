@@ -1,3 +1,6 @@
+import { BehaviorSubject, Observable } from 'rxjs';
+
+import { BudgetModel } from '../models/BudgetModel';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,6 +12,12 @@ export class BudgetService {
 
   subTotalPrice: number = 0;
   totalPrice: number = this.subTotalPrice;
+
+  // Using a BehaviorSubject to share data between components that are not directly related 
+  // and keep them up to date when the data changes
+  initialBudgetList: BudgetModel[] = [];
+  private budgetListSource = new BehaviorSubject(this.initialBudgetList);
+  budgetsList: Observable<BudgetModel[]> = this.budgetListSource.asObservable();
 
   computeSubTotalPrice(checked: boolean, price: number) {
     if (checked) {
@@ -22,6 +31,12 @@ export class BudgetService {
 
   setTotal(total: number) {
     this.totalPrice = total;
+  }
+
+  addBudget(budget: BudgetModel) {
+    const newBudgetsList: BudgetModel[] = [...this.budgetListSource.value, budget];
+    this.budgetListSource.next(newBudgetsList);
+    console.log(this.budgetsList);
   }
 
   calculateTotal(subTotal: number, pagesNumber: number, languagesNumber: number, price: number=30): number {
