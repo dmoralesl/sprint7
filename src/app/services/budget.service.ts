@@ -36,7 +36,6 @@ export class BudgetService {
   addBudget(budget: BudgetModel) {
     const newBudgetsList: BudgetModel[] = [...this.budgetListSource.value, budget];
     this.budgetListSource.next(newBudgetsList);
-    console.log(this.budgetsList);
   }
 
   calculateTotal(subTotal: number, pagesNumber: number, languagesNumber: number, price: number=30): number {

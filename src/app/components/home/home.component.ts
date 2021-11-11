@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       name: this.productsForm.value.budgetName,
       client: this.productsForm.value.clientName,
       total: this.totalPrice,
+      creationDate: new Date(),
       options: {
         web: {
           selected: this.productsForm.value.web,

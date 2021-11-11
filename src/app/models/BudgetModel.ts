@@ -11,4 +11,5 @@ export interface BudgetModel {
         sem: boolean
     },
     total: number;
+    creationDate: Date;
 }

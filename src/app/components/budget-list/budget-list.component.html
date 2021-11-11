@@ -1,3 +1,8 @@
+<div *ngIf="budgets.length > 0" class="sort-actions">
+    <button class="btn btn-dark" (click)="triggerSort('name')">A-Z</button>
+    <button class="btn btn-dark" (click)="triggerSort('creationDate')">Date</button>
+    <button class="btn btn-secondary" (click)="triggerSort('')"><fa-icon [icon]="faSync"></fa-icon></button>
+</div>
 
 <div *ngFor="let budget of budgets" class="budget">
     <div class="budget-header">
@@ -28,4 +33,8 @@
             </li>
         </ul>
     </div>
+    <span class="budget-date">
+        {{ budget.creationDate.getDay() }}/{{ budget.creationDate.getMonth() +1 }}/{{ budget.creationDate.getFullYear() }} 
+        {{ budget.creationDate.getHours() }}:{{ budget.creationDate.getMinutes().toString().padStart(2, '0') }}
+    </span>
 </div>
