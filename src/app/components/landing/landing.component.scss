@@ -1,0 +1,36 @@
+:host {
+    color: gray;
+
+    h1 {
+        border-bottom: 2px solid black;
+        font-weight: bold;
+        text-align: center;
+
+    }
+
+    h3 {
+        text-decoration: underline;
+    }
+
+    p {
+        padding: 1rem;
+        font-size: smaller;
+    }
+
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        width: max-content;
+        margin: auto;
+
+        font-size: 2rem;
+        font-style: italic;
+        color: #408a94;
+        font-weight: bold;
+    }
+    fa-icon {
+        font-size: 2rem;
+    }
+}

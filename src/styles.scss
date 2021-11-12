@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Roboto', sans-serif;
+  padding: 2rem;
+}
+
+
+// Override Bootstrap default styles
+$warning: #F77754;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+
+// Since modal is not created inside component that contains it, we need to override at top level
+.bottom-modal {
+  display: flex !important;
+  align-items: end;
+
+  .modal-content {
+    border: 2px solid black;
+    border-radius: 1rem;
+  }
+}

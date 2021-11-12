@@ -1,0 +1,33 @@
+:host {
+    display: flex;
+    flex-direction: row;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-bottom: 2rem;
+
+    div {
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+    }
+
+    button {
+        width: max-content;
+        margin: auto;
+        margin-top: 2rem;
+    }
+}
+
+a {
+    padding-bottom: 2.5rem;
+    font-size: larger;
+}
+
+div:first-child {
+    display: flex;
+    flex-direction: column;
+}
