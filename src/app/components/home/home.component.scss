@@ -23,11 +23,16 @@ form {
 }
 
 a {
-    padding-bottom: 2.5rem;
     font-size: larger;
+    max-width: max-content;
 }
 
 div:first-child {
     display: flex;
     flex-direction: column;
+}
+
+fa-icon:last-child {
+    font-size: larger;
+    cursor: pointer;
 }

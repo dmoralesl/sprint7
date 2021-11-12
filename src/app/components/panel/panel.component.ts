@@ -14,6 +14,8 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 export class PanelComponent implements OnInit, AfterViewInit {
 
   @Input() subTotal: number = 0; 
+  @Input() pagesNumber: number = 1;
+  @Input() languagesNumber: number = 1;
   @Output() newTotalEvent = new EventEmitter<TotalEventModel>();
   
   constructor(
@@ -41,6 +43,8 @@ export class PanelComponent implements OnInit, AfterViewInit {
         languagesNumber
       });
     });
+    this.webDetailsForm.get('numberPages')?.patchValue(this.pagesNumber);
+    this.webDetailsForm.get('numberLanguages')?.patchValue(this.languagesNumber);
   }
 
   // Font Awesome Icons
@@ -49,8 +53,8 @@ export class PanelComponent implements OnInit, AfterViewInit {
   modalText: string = "";
 
   webDetailsForm: FormGroup = new FormGroup({
-    numberPages: new FormControl(1, [Validators.required, Validators.min(1)]),
-    numberLanguages: new FormControl(1, [Validators.required, Validators.min(1)])
+    numberPages: new FormControl(this.pagesNumber, [Validators.required, Validators.min(1)]),
+    numberLanguages: new FormControl(this.languagesNumber, [Validators.required, Validators.min(1)])
   });
 
   openModal(targetModal: TemplateRef<any>) {

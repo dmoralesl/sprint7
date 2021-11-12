@@ -1,7 +1,11 @@
 <div>
-    <a routerLink="/" routerLinkActive="active">
-        <fa-icon [icon]="faArrowLeft" [style.color]="'gray'"></fa-icon>
-    </a>
+    <div class="d-flex flex-row align-items-center justify-content-between pb-5 pe-4">
+        <a routerLink="/" routerLinkActive="active">
+            <fa-icon [icon]="faArrowLeft" [style.color]="'gray'"></fa-icon>
+        </a>
+        <fa-icon [icon]="faShareAlt" [style.color]="'gray'" (click)="copyBudgetToClipboard()"></fa-icon>
+        
+    </div>
 
     <p>What do you want?</p>
 
@@ -20,7 +24,11 @@
             <input type="checkbox" name="web" #web formControlName="web">
             <label for="web" >A web page (500$)</label>
         </div>
-        <app-panel *ngIf="viewWebDetails" [subTotal]="subTotalPrice" (newTotalEvent)="setTotal($event)"></app-panel>
+        <app-panel *ngIf="productsForm.get('web')!.value" 
+            [subTotal]="subTotalPrice" 
+            [pagesNumber]="pagesNumber" 
+            [languagesNumber]="languagesNumber"
+            (newTotalEvent)="setTotal($event)"></app-panel>
         <div>
             <input type="checkbox" name="seo" #seo formControlName="seo">
             <label for="web">SEO service (300$)</label>
