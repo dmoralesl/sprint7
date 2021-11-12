@@ -1,0 +1,10 @@
+<form [formGroup]="webDetailsForm" id="webDetails">
+    <span [style.fontStyle]="'italic'">* Base price includes one page and one language</span>
+    <div>
+        <app-custom-input formControlName="numberPages" #numberPages></app-custom-input>
+        <label for="numberPages">Number of pages</label>
+    </div>
+    <div>
+        <app-custom-input formControlName="numberLanguages" #numberLanguages></app-custom-input>
+        <label for="numberLanguages">Number of languages</label>
+    </div></form>
