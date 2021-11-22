@@ -15,45 +15,15 @@ export class BudgetListComponent implements OnInit {
   faCheckCircle = faCheckCircle;
   faSync = faSync;
 
-  // budgets: BudgetModel[] = [];
+  budgets: BudgetModel[] = [];
 
-  budgets: BudgetModel[] = [{
-    total: 2000,
-    name: 'Budget 3',
-    client: 'Client 1',
-    options: {
-      web: {
-        selected: true,
-        pagesNumber: 10,
-        languagesNumber: 2
-      },
-      seo: true,
-      sem: true
-    },
-  creationDate: new Date()}
-    ,
-    {
-      total: 800,
-    name: 'Budget 2',
-    client: 'Client 2',
-    options: {
-      web: {
-        selected: false,
-        pagesNumber: 10,
-        languagesNumber: 2
-      },
-      seo: true,
-      sem: true
-    },
-  
-creationDate: new Date()}];
 
   constructor(private budgetSerivce: BudgetService) { }
 
   // Subscribing to the budget service to get the budgets list updated when a new budget is added
   // whereever the budget service is called (home component in this case)
   ngOnInit(): void {
-    // this.budgetSerivce.budgetsList.subscribe(budgetsList => this.budgets = budgetsList);
+    this.budgetSerivce.budgetsList.subscribe(budgetsList => this.budgets = budgetsList);
 
     if (this.attributeToSort) {
       this.sortBudgetListByAttribute();
