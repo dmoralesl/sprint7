@@ -1,0 +1,38 @@
+:host {
+    display: flex;
+    flex-direction: row;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-bottom: 2rem;
+
+    div {
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+    }
+
+    button {
+        width: max-content;
+        margin: auto;
+        margin-top: 2rem;
+    }
+}
+
+a {
+    font-size: larger;
+    max-width: max-content;
+}
+
+div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+fa-icon:last-child {
+    font-size: larger;
+    cursor: pointer;
+}

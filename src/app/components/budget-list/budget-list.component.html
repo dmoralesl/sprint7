@@ -1,0 +1,44 @@
+<div *ngIf="budgets.length > 0" class="sort-actions">
+    <button class="btn btn-dark" (click)="triggerSort('name')">A-Z</button>
+    <button class="btn btn-dark" (click)="triggerSort('creationDate')">Date</button>
+    <button class="btn btn-secondary" (click)="triggerSort('')"><fa-icon [icon]="faSync"></fa-icon></button>
+</div>
+<div>
+    <input type="text" #budgetSearchBar [(ngModel)]="nameSearched" placeholder="Search budget...">
+</div>
+<div *ngFor="let budget of budgets">
+    <div *ngIf="!nameSearched || budget.name.includes(nameSearched)" class="budget">
+        <div class="budget-header">
+            <div>{{ budget.name }} <span [style.color]="'gray'">[{{ budget.client }}]</span></div>
+            <span>{{ budget.total }}$</span>
+        </div>
+        <div class="budget-body">
+            <ul>
+                <li *ngIf="budget.options.web.selected">
+                    <span><fa-icon [icon]="faCheckCircle" [style.color]="'green'"></fa-icon></span>
+                    Web
+                    <ul>
+                        <li>
+                            {{ budget.options.web.pagesNumber || 1 }} pages
+                        </li>
+                        <li>
+                            {{ budget.options.web.languagesNumber || 1 }} languages
+                        </li>                    
+                    </ul>
+                </li>
+                <li *ngIf="budget.options.seo">
+                    <span><fa-icon [icon]="faCheckCircle" [style.color]="'green'"></fa-icon></span>
+                    Seo
+                </li>
+                <li *ngIf="budget.options.sem">
+                    <span><fa-icon [icon]="faCheckCircle" [style.color]="'green'"></fa-icon></span>
+                    Sem
+                </li>
+            </ul>
+        </div>
+        <span class="budget-date">
+            {{ budget.creationDate.getDay() }}/{{ budget.creationDate.getMonth() +1 }}/{{ budget.creationDate.getFullYear() }} 
+            {{ budget.creationDate.getHours() }}:{{ budget.creationDate.getMinutes().toString().padStart(2, '0') }}
+        </span>
+    </div>
+</div>
